@@ -15,9 +15,46 @@
     <label>Email: <input type="email" name="email"></label><br>
     <button type="submit">Reserve</button>
   </form>
+<form id="appointmentForm">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="text" name="familyName" placeholder="Family Name" required>
+  <input type="date" name="date" required>
+  <input type="time" name="time" required>
+  <input type="tel" name="phone" placeholder="Phone" required>
+  <button type="submit">Reserve</button>
+</form>
+
+<p id="status"></p>
+
+<script>
+document.getElementById("appointmentForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    familyName: form.familyName.value,
+    date: form.date.value,
+    time: form.time.value,
+    phone: form.phone.value
+  };
+
+  const response = await fetch("YOUR_SCRIPT_URL_HERE", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  });
+
+  const result = await response.json();
+  document.getElementById("status").textContent = result.result === "success"
+    ? "✅ Reservation saved!"
+    : "❌ Error saving reservation.";
+});
+</script>
 
   <p id="message"></p>
 
   <script src="main.js"></script>
 </body>
+
 </html>
