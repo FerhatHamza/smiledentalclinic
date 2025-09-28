@@ -39,7 +39,7 @@ document.getElementById("appointmentForm").addEventListener("submit", async func
     phone: form.phone.value
   };
 
-  const response = await fetch("YOUR_SCRIPT_URL_HERE", {
+  const response = await fetch("https://script.google.com/macros/s/AKfycbznhA0B7zS8BzJcz6D-kRDzvxGqkk98DN4jrPkudrX6Txus7HMumTsmDCe7tn7fiWeIPw/exec", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }
@@ -58,3 +58,4 @@ document.getElementById("appointmentForm").addEventListener("submit", async func
 </body>
 
 </html>
+
